@@ -143,7 +143,7 @@
       background-color: black;
       border-top: 2px solid rgb(48, 38, 51);
       padding: 1em;
-      font-size: 2.5em;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       font-family: 'Determination', monospace;
       line-height: 1.4em;
       display: flex;
@@ -154,7 +154,7 @@
     }
 
     .dialogue-portrait {
-      height: 128px;
+      height: 20%;
       object-fit: fill;
       /*border: 2px solid white;*/
     }
@@ -162,17 +162,44 @@
     .dialogue-text {
       color: white;
       padding-right: 1em;
-      padding-left: 3em;
-      max-width: 85%;
+      padding-left: 1em;
+      width: 85%;
       min-height: 3em;
       white-space: pre-wrap;
+    }
+    
+    .tp-meter {
+      background: darkred;
+      position: absolute;
+      top: 20%;
+      left: 3%;
+      width: 2%;
+      aspect-ratio: 1/8;
+      z-index: 2;
+      transform: skewY(-45deg);
+    }
+
+    /*.tp-border {
+      height: 100%;
+      border-top: 20px solid white;  Constant border
+      overflow: hidden;
+      z-index: 3;
+    }*/
+
+    .tp-filling {
+      background-color: orange;
+      height: 100%;
+      width: 100%;
+      transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 0.2s linear;
     }
 
     /* Left side GIF container */
     .left-gif-container {
       position: absolute;
       top: 20%;
-      left: 3%;
+      left: 7%;
       display: flex;
       flex-direction: column;
       gap: 3em;
@@ -216,7 +243,11 @@
 <body>
   <div class="grid-background-layer-1"></div>
   <div class="grid-background-layer-2"></div>
-  <audio id="musicPlayer" preload="auto"></audio>
+
+  <div class="tp-meter">
+    <div class="tp-filling" id="progressMeter">
+    </div>
+  </div>
 
   <!-- Left side dynamic GIFs for Kris, Susie, and Ralsei -->
   <div class="left-gif-container">
@@ -325,6 +356,10 @@
     const breakIconPortrait = 'break-icon.png';
     const breakIconGif = 'break_right.gif';
 
+
+    const progressBar = document.getElementById('progressMeter');
+    let phaseDuration = 60 * 25;
+
     // Current chosen character for right side
     let currentCharacter = characters[0];
 
@@ -398,13 +433,16 @@
           phase = 'LongBreak';
           timeLeft = longBreak;
           cycleCount = 0;
+          phaseDuration = longBreak;
         } else {
           phase = 'Break';
           timeLeft = shortBreak;
+          phaseDuration = shortBreak;
         }
       } else {
         phase = 'Work';
         timeLeft = workDuration;
+        phaseDuration = workDuration;
       }
       updateAllVisuals();
       alarm.play();
@@ -413,6 +451,11 @@
     function skipPhase() {
       click.play();
       switchPhase();
+    }
+
+    function updateProgressMeter() {
+      const progress = 1 - (timeLeft / phaseDuration);
+      progressBar.style.transform = `scaleY(${progress})`;
     }
 
     function toggleTimer() {
@@ -428,6 +471,7 @@
           if (timeLeft > 0) {
             timeLeft--;
             updateTimerDisplay();
+            updateProgressMeter();
           } else {
             switchPhase();
           }
