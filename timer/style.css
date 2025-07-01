@@ -77,8 +77,8 @@ body {
 }
 
 .timer {
-    font-size: 5em;
-    margin-bottom: 1em;
+    font-size: clamp(2.5em, 14vw, 5em);
+    margin-bottom: clamp(0.8em, 1em - 10vw, 0.5em);
     background-color: black;
     border: 4px solid green;
     padding-top: 1em;
@@ -98,7 +98,7 @@ body {
     color: white;
     border: 2px solid cyan;
     padding: 0.6em 1em;
-    width: 7.5cm;
+    width: clamp(3.25cm, 60vw, 7.5cm);
     /*margin: 0 auto 1em auto;*/
     user-select: none;
     background-color: #121212;
@@ -107,7 +107,7 @@ body {
 }
 
 #controls {
-    width: 7.5cm;
+    width: clamp(3.25cm, 60vw, 7.5cm);
     /*margin: 0 auto;*/
     text-align: match-parent;
     display: flex;
@@ -144,7 +144,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4.5cm;
+    height: clamp(1.5cm, 20%, 4.5cm);
     background-color: black;
     border-top: 2px solid rgb(48, 38, 51);
     padding: 1em;
@@ -166,11 +166,11 @@ body {
 
 .dialogue-text {
     position: absolute;
-    left: 4cm;
+    left: 25vw;
     color: white;
     padding-right: 1em;
     padding-left: 1em;
-    width: 85%;
+    width: 75vw;
     min-height: 3em;
     white-space: pre-wrap;
 }
