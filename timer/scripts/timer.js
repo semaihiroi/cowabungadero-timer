@@ -10,6 +10,7 @@ let timer = null;
 let phase = 'Work'; // 'Work', 'Break', 'LongBreak'
 let cycleCount = 0;
 let isRunning = false;
+let typingInterval = null;
 
 // DOM elements
 const timerDisplay = document.getElementById('timer');
@@ -88,13 +89,21 @@ function randomChoice(arr) {
 }
 
 function typeQuote(text, element) {
+    // Clear any previous typing interval
+    if (typingInterval !== null) {
+        clearInterval(typingInterval);
+        typingInterval = null;
+    }
+
+    //type text character by character
     element.textContent = '';
     let i = 0;
-    const interval = setInterval(() => {
+    typingInterval = setInterval(() => {
         if (i < text.length) {
             element.textContent += text[i++];
         } else {
-            clearInterval(interval);
+            clearInterval(typingInterval);
+            typingInterval = null;
         }
     }, 30);
 }
