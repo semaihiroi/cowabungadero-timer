@@ -31,11 +31,11 @@ body {
 
 .grid-background-layer-1,
 .grid-background-layer-2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: 70;
+    left: 70;
+    width: 200%;
+    height: 200%;
     background-image:
         repeating-linear-gradient(to bottom, rgba(70, 0, 70, 1) 0px, rgba(70, 0, 70, 1) 2px, transparent 2px, transparent 50px),
         repeating-linear-gradient(to right, rgba(70, 0, 70, 1) 0px, rgba(70, 0, 70, 1) 2px, transparent 2px, transparent 50px);
