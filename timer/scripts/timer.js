@@ -21,6 +21,7 @@ const quoteBox = document.getElementById('quoteBox');
 const portrait = document.getElementById('portrait');
 const alarm = document.getElementById('alarmSound');
 const click = document.getElementById('clickSound');
+const tpPercent = document.getElementById('tpPercent')
 
 const gifKris = document.getElementById('gifKris');
 const gifSusie = document.getElementById('gifSusie');
@@ -184,6 +185,8 @@ function skipPhase() {
 function updateProgressMeter() {
     const progress = 1 - (timeLeft / phaseDuration);
     progressBar.style.transform = `scaleY(${progress})`;
+    const percentProgress = Math.floor(progress*100).toString();
+    tpPercent.textContent = `${percentProgress}`;
 }
 
 function toggleTimer() {

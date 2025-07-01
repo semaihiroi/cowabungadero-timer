@@ -176,16 +176,35 @@ body {
     white-space: pre-wrap;
 }
 
+.tp-container {
+    position: absolute;
+    top: 15%;
+    left: 3%;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+}
+
+.tp-sidebar {
+    color: white;
+    margin-top: 10vh;
+    font-size: 2.2em;
+    width: 2.2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#tpPercent {
+    z-index: 3;
+}
+
 .tp-meter {
     background: darkred;
-    position: absolute;
-    top: 20%;
-    left: 3%;
     width: 1.2cm;
     aspect-ratio: 1/8;
-    z-index: 2;
     transform: skewY(-45deg);
 }
+
 
 /*.tp-border {
       height: 100%;
