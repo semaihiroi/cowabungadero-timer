@@ -49,9 +49,9 @@ const torielQuotes = [
 
 // Character data for right side GIF and portrait
 const characters = [
-    { name: 'Spamton', quotes: spamtonQuotes, imgPortrait: 'gifs/spamton.webp', imgGifWork: 'gifs/spamton_work.webp', imgGifBreak: 'spamton_break.gif' },
+    { name: 'Spamton', quotes: spamtonQuotes, imgPortrait: 'gifs/spamton.webp', imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
     { name: 'Tenna', quotes: tennaQuotes, imgPortrait: 'gifs/tenna.png', imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'tenna_break.gif' },
-    { name: 'Toriel', quotes: torielQuotes, imgPortrait: 'gifs/toriel.webp', imgGifWork: 'toriel_work.gif', imgGifBreak: 'toriel_break.gif' },
+    { name: 'Toriel', quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png' },
 ];
 
 // Left side GIFs for phases
@@ -62,20 +62,20 @@ const leftGifs = {
         Ralsei: 'gifs/ralsei_work.gif',
     },
     Break: {
-        Kris: 'gifs/kris_break.webp',
-        Susie: 'gifs/susie_break.webp',
-        Ralsei: 'gifs/ralsei_break.webp',
+        Kris: 'gifs/kris_break.png',
+        Susie: 'gifs/susie_break.png',
+        Ralsei: 'gifs/ralsei_break.png',
     },
     LongBreak: {
-        Kris: 'gifs/kris_longbreak.webp',
-        Susie: 'gifs/susie_longbreak.webp',
-        Ralsei: 'gifs/ralsei_longbreak.webp',
+        Kris: 'gifs/kris_longbreak.gif',
+        Susie: 'gifs/susie_longbreak.gif',
+        Ralsei: 'gifs/ralsei_longbreak.gif',
     }
 };
 
 // Break icon for portrait and right gif when on break
-const breakIconPortrait = 'break-icon.png';
-const breakIconGif = 'break_right.gif';
+const breakIconPortrait = 'gifs/toriel.png';
+const breakIconGif = 'gifs/toriel_break.png';
 
 
 const progressBar = document.getElementById('progressMeter');
