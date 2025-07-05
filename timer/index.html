@@ -48,7 +48,7 @@
     <div class="dialogue-text" id="quoteBox"></div>
     <div class="btn-container">
       <button class="corner-btn" onclick="openPopup()">Info</button>
-      <button class="corner-btn" onclick="openSettings()">Settings</button>
+      <button class="corner-btn" onclick="openSettings()" style="border: 2px solid magenta; color: hotpink">Settings</button>
     </div>
   </div>
 
@@ -56,8 +56,7 @@
     <div class="popup-window">
       <button class="close-btn" onclick="closePopup()">X</button>
       <div class="popup-scroll">
-        <!-- Your long scrollable text goes here -->
-        <h2>Welcome to the Deltarune Cowabunga-doro Timer!</h2>
+        <h2 id="info-header">Welcome to the Deltarune Cowabunga-doro Timer!</h2>
         <br>
         <p>The <strong>Pomodoro Method</strong> is a way of maintaining focus during work or studying, 
           using time intervals. Usually this is 25 minutes of working followed by a 5 minute break, 
@@ -89,6 +88,20 @@
         </p>
         <br>
         <p><strong>For any questions, comments, bug reports, or feature requests, please check out my <a href="https://cowabungadero.net/contact/">contact page!</a></strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="menu" class="popup-overlay">
+    <div class="popup-window" style="border: 2px solid magenta">
+      <button class="close-btn" onclick="closeSettings()" style="border: 2px solid magenta">X</button>
+      <div class="popup-scroll">
+        <h2 id="settings-header">Settings</h2>
+        <label>Work: </label><button>-</button><input value="25"><button>+</button>
+        <br>
+        <label>Short Break: </label><button>-</button><input value="5"><button>+</button>
+        <br>
+        <label>Long Break: </label><button>-</button><input value="15"><button>+</button>
       </div>
     </div>
   </div>

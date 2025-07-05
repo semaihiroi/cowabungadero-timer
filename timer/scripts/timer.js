@@ -194,6 +194,14 @@ function closePopup() {
     localStorage.setItem("SeenPopUp", true);
 }
 
+function openSettings() {
+    document.getElementById('menu').style.display = 'flex';
+}
+
+function closeSettings() {
+    document.getElementById('menu').style.display = 'none';
+}
+
 function updateProgressMeter() {
     const progress = 1 - (timeLeft / phaseDuration);
     progressBar.style.transform = `scaleY(${progress})`;

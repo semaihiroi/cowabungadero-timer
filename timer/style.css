@@ -147,8 +147,17 @@ strong {
     color:aqua;
 }
 
-h2 {
-    color:#0f0
+#info-header {
+    color:rgb(193, 255, 47)
+}
+
+#settings-header {
+    color: hotpink;
+    text-align: center;
+}
+
+.susie-border {
+    border: 2px solid magenta
 }
 
 .dialogue-bar {
@@ -327,6 +336,7 @@ h2 {
     color: rgb(193, 255, 47);
     background-color: black;
     border: 2px solid #0f0;
+    margin: 5px
 }
 
 .close-btn {
