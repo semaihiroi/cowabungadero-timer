@@ -340,4 +340,5 @@ h2 {
     .left-gif-container {display: none;}
     .right-gif-container {display: none;}
     .dialogue-portrait {transform: scale(0.75)}
+    .btn-container {bottom: 20%;}
 }
