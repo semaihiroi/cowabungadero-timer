@@ -13,7 +13,7 @@
 
   <div class="tp-container">
     <div class="tp-sidebar">
-      <img src="gifs/spr_tplogo.png"/>
+      <img src="gifs/spr_tplogo.png" style="width:2.2em"/>
       <div id="tpPercent">0</div>
       <div>%</div>
     </div>
@@ -46,7 +46,10 @@
   <div class="dialogue-bar">
     <img src="spamton.png" class="dialogue-portrait" id="portrait" alt=""/>
     <div class="dialogue-text" id="quoteBox"></div>
-    <button onclick="openPopup()">Open Info</button>
+    <div class="btn-container">
+      <button class="corner-btn" onclick="openPopup()">Info</button>
+      <button class="corner-btn" onclick="openSettings()">Settings</button>
+    </div>
   </div>
 
   <div id="popup" class="popup-overlay">

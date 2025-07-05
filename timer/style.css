@@ -159,7 +159,7 @@ h2 {
     height: clamp(2.5cm, 25%, 6cm);
     background-color: black;
     border-top: 2px solid rgb(48, 38, 51);
-    padding: 1em;
+    padding-top: 1em;
     font-size: clamp(1rem, 2.5vw, 2.5rem);
     font-family: 'Determination', monospace;
     line-height: 1.4em;
@@ -203,7 +203,7 @@ h2 {
     width: 2.2vw;
     display: flex;
     flex-direction: column;
-    z-index: 3;
+    z-index: 4;
 }
 
 #tpPercent {
@@ -311,6 +311,19 @@ h2 {
     margin-top: 1em;
 }
 
+.btn-container {
+    position:absolute;
+    bottom: 10%;
+    left:95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.corner-btn {
+    font-family: 'Bitrimus', monospace;
+    font-size: 0.8em;
+}
+
 .close-btn {
     position: absolute;
     top: 8px;
@@ -320,7 +333,7 @@ h2 {
     color: white;
     padding: 0.2em 0.6em;
     margin: 0, 1em;
-    font-family: monospace;
+    font-family: 'Determination';
     cursor: pointer; }
 
 @media (orientation: portrait) {
