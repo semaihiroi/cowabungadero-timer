@@ -172,8 +172,9 @@ h2 {
 
 .dialogue-portrait {
     /*height: 10vh;*/
-    object-fit: fill;
+    /*object-fit: fill;*/
     /*border: 2px solid white;*/
+    max-width: 20vw;
 }
 
 .dialogue-text {
@@ -340,5 +341,5 @@ h2 {
     .left-gif-container {display: none;}
     .right-gif-container {display: none;}
     .dialogue-portrait {transform: scale(0.75)}
-    .btn-container {bottom: 20%;}
+    .btn-container {bottom: 35%;}
 }
