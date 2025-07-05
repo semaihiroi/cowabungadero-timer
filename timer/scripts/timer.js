@@ -182,6 +182,14 @@ function skipPhase() {
     switchPhase();
 }
 
+function openPopup() {
+    document.getElementById('popup').style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
 function updateProgressMeter() {
     const progress = 1 - (timeLeft / phaseDuration);
     progressBar.style.transform = `scaleY(${progress})`;

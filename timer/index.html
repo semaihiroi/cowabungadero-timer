@@ -46,6 +46,48 @@
   <div class="dialogue-bar">
     <img src="spamton.png" class="dialogue-portrait" id="portrait" alt=""/>
     <div class="dialogue-text" id="quoteBox"></div>
+    <button onclick="openPopup()">Open Info</button>
+  </div>
+
+  <div id="popup" class="popup-overlay">
+    <div class="popup-window">
+      <button class="close-btn" onclick="closePopup()">X</button>
+      <div class="popup-scroll">
+        <!-- Your long scrollable text goes here -->
+        <h2>Welcome to the Deltarune Cowabunga-doro Timer!</h2>
+        <br>
+        <p>The <strong>Pomodoro Method</strong> is a way of maintaining focus during work or studying, 
+          using time intervals. Usually this is 25 minutes of working followed by a 5 minute break, 
+          with a longer break every 4 cycles! I am bad at focusing sometimes, and I noticed that two
+          things that kept me focused were the <strong>Pomodoro Method</strong> and the music of <strong>Deltarune</strong>. So I decided
+          to combine them! This has been a very useful tool for me, and I hope it can be helpful for you 
+          as well!</p>
+        <br>
+        <p>Besides the timer, there are some additional features influenced by the Deltarune
+          battle UI. The TP meter stands for <strong>Time Points</strong> and indicates your progress for the current
+          timer! You can also click the <strong>characters</strong> to generate new dialogue. Finally, if you'd like
+          to adjust the intervals for any of the timer sessions, you can click the <strong>Settings button</strong>,
+          or you can click the <strong>Info button</strong> to reopen this box!</p>
+        <br>
+        <p>I recommend listening to Deltarune's great soundtrack alongside this. Not only does fit well together,
+          but <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10162369/">instrumental music is scientifically
+          better for focus than music with lyrics, and is perceived as helpful for studying!</a></p>
+        <br>
+        <p>
+          Credits to Toby Fox, Temmie Chang, and all of the amazing staff on Deltarune! Please consider buying Deltarune
+          or the soundtrack on Steam to support the original creators and their wonderful work! You can find it here:
+        </p>
+        <br>
+        <iframe src="https://store.steampowered.com/widget/1671210/" frameborder="0" width="646" height="190"></iframe>
+        <br>
+        <p>Credits to <a href="https://www.behance.net/gallery/31268855/Determination-Better-Undertale-Font?locale=en_US#">Determination by Haley Wakamatsu</a>, 
+          <a href="https://www.deviantart.com/maxigamer/art/MERCY-Font-the-UNDERTALE-font-for-battle-buttons-590779512">MERCY by Maxigamer</a>,
+          and <a href="https://ggbot.itch.io/bitrimus-font">Bitrimus by GGBotNet</a> as well, for the fonts used in this project!
+        </p>
+        <br>
+        <p><strong>For any questions, comments, bug reports, or feature requests, please check out my <a href="https://cowabungadero.net/contact/">contact page!</a></strong></p>
+      </div>
+    </div>
   </div>
 
   <audio id="alarmSound" src="sounds/snd_badexplosion.wav" preload="auto"></audio>
