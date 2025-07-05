@@ -77,12 +77,14 @@ const leftGifs = {
 const breakIconPortrait = 'gifs/toriel.png';
 const breakIconGif = 'gifs/toriel_break.png';
 
-
+// Data for progress percentage meter
 const progressBar = document.getElementById('progressMeter');
 let phaseDuration = 60 * 25;
 
 // Current chosen character for right side
 let currentCharacter = characters[0];
+
+//local variable for whether to display info popup
 
 // Helper: pick random item from array
 function randomChoice(arr) {
@@ -184,10 +186,12 @@ function skipPhase() {
 
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
+    localStorage.setItem("SeenPopUp", false);
 }
 
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
+    localStorage.setItem("SeenPopUp", true);
 }
 
 function updateProgressMeter() {
@@ -219,6 +223,15 @@ function toggleTimer() {
 }
 
 // Initialize
+
+window.onload = (event) => {
+    console.log(localStorage.getItem('SeenPopUp'));
+    if (localStorage.getItem('SeenPopUp') == 'true') {
+        document.getElementById('popup').style.display = 'none';
+    } else {
+        document.getElementById('popup').style.display = 'flex';
+    }
+};
 
 // Initial setup
 updateAllVisuals();

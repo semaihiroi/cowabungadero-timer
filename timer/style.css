@@ -285,7 +285,7 @@ h2 {
     /*semi-transparent black*/ 
     z-index: 99;
     /* make sure it's above everything */
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
