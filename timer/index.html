@@ -93,15 +93,15 @@
   </div>
 
   <div id="menu" class="popup-overlay">
-    <div class="popup-window" style="border: 2px solid magenta">
-      <button class="close-btn" onclick="closeSettings()" style="border: 2px solid magenta">X</button>
+    <div class="popup-window" style="border: 2px solid magenta;">
+      <button class="close-btn" onclick="closeSettings()" style="border: 2px solid magenta;">X</button>
       <div class="popup-scroll">
         <h2 id="settings-header">Settings</h2>
-        <label>Work: </label><button>-</button><input value="25"><button>+</button>
+        <div class="settings-option"><label >Work Duration: </label><input class="time-setter" id="work-time-set" value="25" type="number" size="2" min="0" max="99"></div>
         <br>
-        <label>Short Break: </label><button>-</button><input value="5"><button>+</button>
+        <div class="settings-option"><label >Short Break Duration: </label><input class="time-setter" id="s-break-time-set" value="5" type="number" size="2" min="1" max="99"></div>
         <br>
-        <label>Long Break: </label><button>-</button><input value="15"><button>+</button>
+        <div class="settings-option"><label >Long Break Duration: </label><input class="time-setter" id="l-break-time-set" value="15" type="number" size="2" min="1" max="99"></div>
       </div>
     </div>
   </div>

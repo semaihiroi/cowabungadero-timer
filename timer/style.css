@@ -156,6 +156,20 @@ strong {
     text-align: center;
 }
 
+.settings-option {
+    color: hotpink;
+}
+
+.time-setter {
+    text-align: right;
+    color: hotpink;
+    background-color: #111;
+    outline: 2px solid magenta;
+    position: absolute;
+    right: 5%;
+    font-family: 'Mercy', monospace;
+}
+
 .susie-border {
     border: 2px solid magenta
 }
