@@ -343,7 +343,7 @@ strong {
     padding-right: 0.5em;
     color: white;
     font-family: 'Determination', monospace;
-    font-size: clamp(1.2em, 0.1vw, 1.5em);
+    font-size: clamp(1.2em, 0.1vw, 2em);
     line-height: 1.5em;
     margin-top: 1em;
 }
