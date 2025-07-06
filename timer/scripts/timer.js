@@ -38,23 +38,40 @@ const partyButton1 = document.getElementById('butt1');
 const partyButton2 = document.getElementById('butt2');
 const buttonRight = document.getElementById('buttRight');
 
+//list sounds and decrease volume to 50%.
+const sounds = [
+    alarm,
+    click
+];
+
+for (s in sounds) {
+    sounds[s].volume = 0.3;
+    console.log(sounds[s]);
+}
+
 // Quotes and portraits for characters
 const spamtonQuotes = [
-    "Make the DEAL of your LIFE!",
-    "WORKING? That's the [Hot New Thing]!",
-    "You can't have [[Success]] without [[Pain]]!"
+    "MAKE THE [$32 MSRP] DEAL OF YOUR LIFE!!!",
+    "DON’T BE A [Little Sponge] — GRIND LIKE A [Big Shot]!!!",
+    "NOW’S YOUR CHANCE TO BE A [Big Shot]!!!",
+    "[Click Here] TO STAY ON TASK, [Hyperlink Blocked].",
+    "ENJOY YOUR [Federally Mandated] REST PERIOD!"
 ];
 
 const tennaQuotes = [
-    "Your DESTINY is only a heartbeat away.",
-    "JUST BELIEVE in the [Cosmic Groove] and DANCE!",
-    "You're not alone, my STARLIGHT."
+    "Fresh from the juice, fresh from the juice!",
+    "IT'S WORK. ING. TIIIIME!",
+    "Take five, superstar!",
+    "Time for a backstage breather… Mike, are we live again?",
+    "Let's give our contestant a break - don’t worry, I’ll keep the cameras rolling!"
 ];
 
 const torielQuotes = [
-    "Take a break, dear. You've worked hard.",
-    "Don't forget to rest and eat something wholesome.",
-    "Patience is the key to success, my child."
+    "Take a break, you've worked hard.",
+    "Steady work builds a strong foundation.",
+    "Patience is the key to success.",
+    "Would you like some pie?",
+    "Be like Snoriel and take a nap!"
 ];
 
 const krisQuote = [
@@ -62,15 +79,28 @@ const krisQuote = [
 ];
 
 const susieQuotes = [
-    "..."
+    "Time to smash through this!",
+    "Here, have some chalk.",
+    "If you quit now, I’ll have to drag you back.",
+    "I earned this. You didn’t. Kidding. Mostly.",
+    "Ugh, finally.",
+    "Which Dark World is this, anyway?"
 ];
 
 const ralseiQuotes = [
-    "..."
+    "Every step forward counts.Even the little ones!",
+    "I believe in you. Let’s keep going!",
+    "You’re doing amazing! Just a bit more!",
+    "I’ll make some tea!",
+    "Great job! Let’s take a little rest now."
 ];
 
 const noelleQuotes = [
-    "..."
+    "O-Okay… time to focus! You can do it!",
+    "This beats working with Berdly...",
+    "We’re all in this together… I think!",
+    "I-I hope it’s okay to take a break now?",
+    "Rest is scientifically good for memory! Probably!"
 ];
 
 // Character data
