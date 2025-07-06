@@ -50,58 +50,89 @@ for (s in sounds) {
 }
 
 // Quotes and portraits for characters
-const spamtonQuotes = [
-    "MAKE THE [$32 MSRP] DEAL OF YOUR LIFE!!!",
-    "DON’T BE A [Little Sponge] — GRIND LIKE A [Big Shot]!!!",
-    "NOW’S YOUR CHANCE TO BE A [Big Shot]!!!",
-    "[Click Here] TO STAY ON TASK, [Hyperlink Blocked].",
-    "ENJOY YOUR [Federally Mandated] REST PERIOD!"
-];
+const spamtonQuotes = {
+    work: [
+        "MAKE THE [$32 MSRP] DEAL OF YOUR LIFE!!!",
+        "DON’T BE A [Little Sponge] — GRIND LIKE A [Big Shot]!!!",
+        "NOW’S YOUR CHANCE TO BE A [Big Shot]!!!",
+        "[Click Here] TO STAY ON TASK, [Hyperlink Blocked]."
+    ],
+    break: [
+        "ENJOY YOUR [Federally Mandated] REST PERIOD!",
+        "TAKE THE [Best Break Of Your Life]!"
+    ]
+};
 
-const tennaQuotes = [
-    "Fresh from the juice, fresh from the juice!",
-    "IT'S WORK. ING. TIIIIME!",
-    "Take five, superstar!",
-    "Time for a backstage breather… Mike, are we live again?",
-    "Let's give our contestant a break - don’t worry, I’ll keep the cameras rolling!"
-];
+const tennaQuotes = {
+    work: [
+        "Fresh from the juice, fresh from the juice!",
+        "IT'S WORK. ING. TIIIIME!",
+        "The WORK-O-METER is off the charts, folks!"
+    ],
+    break: [
+        "Take five, superstar!",
+        "Time for a backstage breather… Mike, are we live again?",
+        "Let's give our contestant a break - don’t worry, I’ll keep the cameras rolling!"
+    ]
+};
 
-const torielQuotes = [
-    "Take a break, you've worked hard.",
-    "Steady work builds a strong foundation.",
-    "Patience is the key to success.",
-    "Would you like some pie?",
-    "Be like Snoriel and take a nap! Haha!"
-];
+const torielQuotes = {
+    work: [
+        "Steady work builds a strong foundation.",
+        "Patience is the key to success.",
+    ],
+    break: [
+        "Take a break, you've worked hard.",
+        "Would you like some pie?",
+        "Be like Snoriel and take a nap! Haha!"
+    ]
+};
 
-const krisQuote = [
-    "..."
-];
+const krisQuote = {
+    work: [
+        "..."
+    ],
+    break: [
+        "..."
+    ]
+};
 
-const susieQuotes = [
-    "Time to smash through this!",
-    "Here, have some chalk.",
-    "If you quit now, I’ll have to drag you back.",
-    "I earned this. You didn’t. Kidding. Mostly.",
-    "Ugh, finally.",
-    "Which Dark World is this, anyway?"
-];
+const susieQuotes = {
+    work: [
+        "Time to smash through this!",
+        "I saved you some chalk.",
+        "If you quit now, I’ll have to drag you back."
+    ],
+    break: [
+        "I earned this. You didn’t. Kidding. Mostly.",
+        "Ugh, finally.",
+        "Which Dark World is this, anyway?"
+    ]
+};
 
-const ralseiQuotes = [
-    "Every step forward counts.Even the little ones!",
-    "I believe in you. Let’s keep going!",
-    "You’re doing amazing! Just a bit more!",
-    "I’ll make some tea!",
-    "Great job! Let’s take a little rest now."
-];
+const ralseiQuotes = {
+    work: [
+        "Every step forward counts.Even the little ones!",
+        "I believe in you. Let’s keep going!",
+        "You’re doing amazing! Just a bit more!"
+    ],
+    break: [
+        "I’ll make some tea!",
+        "Great job! Let’s take a little rest now."
+    ]
+};
 
-const noelleQuotes = [
-    "O-Okay… time to focus! You can do it!",
-    "This beats working with Berdly...",
-    "We’re all in this together… I think!",
-    "I-I hope it’s okay to take a break now?",
-    "Rest is scientifically good for memory! Probably!"
-];
+const noelleQuotes = {
+    work: [
+        "O-Okay… time to focus! You can do it!",
+        "This beats working with Berdly...",
+        "We’re all in this together… I think!"
+    ],
+    break: [
+        "I-I hope it’s okay to take a break now?",
+        "Rest is scientifically good for memory! Probably!"
+    ]
+};
 
 // Character data
 const characters = [
@@ -173,28 +204,18 @@ function typeQuote(text, element) {
 }
 
 function updateQuoteBox(character) {
-    /*if (phase === 'Work') {
-        // Pick a random character and quote
-        currentCharacter = randomChoice(otherPeeps);
-        portrait.src = currentCharacter.imgPortrait;
-        gifRight.src = currentCharacter.imgGifWork;
-        const quote = randomChoice(currentCharacter.quotes);
-        typeQuote(quote, quoteBox);
-    } else {
-        portrait.src = breakIconPortrait;
-        gifRight.src = breakIconGif;
-        typeQuote('Break time! ✨', quoteBox);
-    }*/
-    /*if (!character) {
-        console.warn(`Character "${characterName}" not found.`);
-        return;
-    }*/
 
+    let quote = '...';
+    console.log(character.quotes);
     // Update portrait and right-side GIF
     portrait.src = character.imgPortrait;
 
     // Pick a random quote and display it
-    const quote = randomChoice(character.quotes);
+    if (phase === 'Work'){
+        quote = randomChoice(character.quotes.work);
+    } else {
+        quote = randomChoice(character.quotes.break);
+    }
     typeQuote(quote, quoteBox);
 }
 
