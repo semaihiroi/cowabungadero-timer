@@ -151,7 +151,7 @@ strong {
     color:rgb(193, 255, 47)
 }
 
-#settings-header {
+.settings-header {
     color: hotpink;
     text-align: center;
 }
@@ -168,6 +168,19 @@ strong {
     position: absolute;
     right: 5%;
     font-family: 'Mercy', monospace;
+}
+
+.settings-confirm {
+    color: hotpink;
+    background-color: #111;
+    outline: 2px solid magenta;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Mercy', monospace;
+    font-size: clamp(1em, 0.1%, 2em);
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .susie-border {
@@ -330,7 +343,7 @@ strong {
     padding-right: 0.5em;
     color: white;
     font-family: 'Determination', monospace;
-    font-size: 1.5em;
+    font-size: clamp(1.2em, 0.1vw, 1.5em);
     line-height: 1.5em;
     margin-top: 1em;
 }

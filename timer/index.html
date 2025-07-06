@@ -35,7 +35,7 @@
   </div>
 
   <div class="container">
-    <div class="timer" id="timer">25:00</div>
+    <div class="timer" id="timer">0:00</div>
     <div id="phaseBox">Phase: Work | Next: Break</div>
     <div id="controls">
         <button onclick="toggleTimer()" id="startBtn">Start</button>
@@ -96,12 +96,14 @@
     <div class="popup-window" style="border: 2px solid magenta;">
       <button class="close-btn" onclick="closeSettings()" style="border: 2px solid magenta;">X</button>
       <div class="popup-scroll">
-        <h2 id="settings-header">Settings</h2>
-        <div class="settings-option"><label >Work Duration: </label><input class="time-setter" id="work-time-set" value="25" type="number" size="2" min="0" max="99"></div>
+        <h2 class="settings-header">Settings</h2>
+        <div class="settings-option"><label >Work Duration: </label><input class="time-setter" id="work-time-set" type="number" size="2" min="0" max="99"></div>
         <br>
-        <div class="settings-option"><label >Short Break Duration: </label><input class="time-setter" id="s-break-time-set" value="5" type="number" size="2" min="1" max="99"></div>
+        <div class="settings-option"><label >Short Break Duration: </label><input class="time-setter" id="s-break-time-set" type="number" size="2" min="1" max="99"></div>
         <br>
-        <div class="settings-option"><label >Long Break Duration: </label><input class="time-setter" id="l-break-time-set" value="15" type="number" size="2" min="1" max="99"></div>
+        <div class="settings-option"><label >Long Break Duration: </label><input class="time-setter" id="l-break-time-set" type="number" size="2" min="1" max="99"></div>
+        <button class="settings-confirm" onclick="saveSettings()">Save</button>
+        <br>
       </div>
     </div>
   </div>

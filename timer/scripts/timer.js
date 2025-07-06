@@ -1,7 +1,7 @@
 // Timing constants
-const workDuration = 25 * 60;
-const shortBreak = 5 * 60;
-const longBreak = 15 * 60;
+let workDuration = 0 * 60;
+let shortBreak = 0 * 60;
+let longBreak = 0 * 60;
 const cyclesBeforeLong = 4;
 
 // State variables
@@ -27,6 +27,10 @@ const gifKris = document.getElementById('gifKris');
 const gifSusie = document.getElementById('gifSusie');
 const gifRalsei = document.getElementById('gifRalsei');
 const gifRight = document.getElementById('gifRight');
+
+const workTimeSet = document.getElementById('work-time-set');
+const sBreakTimeSet = document.getElementById('s-break-time-set')
+const lBreakTimeSet = document.getElementById("l-break-time-set");
 
 // Quotes and portraits for characters
 const spamtonQuotes = [
@@ -79,7 +83,7 @@ const breakIconGif = 'gifs/toriel_break.png';
 
 // Data for progress percentage meter
 const progressBar = document.getElementById('progressMeter');
-let phaseDuration = 60 * 25;
+let phaseDuration = 1;
 
 // Current chosen character for right side
 let currentCharacter = characters[0];
@@ -126,10 +130,19 @@ function updateQuoteBox() {
     }
 }
 
+function updateTitleTime(mins, secs) {
+    if (isRunning) {
+        document.title = `${mins}:${secs} | Deltarune Pomodoro Timer`
+    } else {
+        document.title = 'Deltarune Pomodoro Timer'
+    }
+}
+
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
     const seconds = (timeLeft % 60).toString().padStart(2, '0');
     timerDisplay.textContent = `${minutes}:${seconds}`;
+    updateTitleTime(minutes, seconds);
 }
 
 function updatePhaseBox() {
@@ -186,7 +199,7 @@ function skipPhase() {
 
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
-    localStorage.setItem("SeenPopUp", false);
+    /*localStorage.setItem("SeenPopUp", false);*/
 }
 
 function closePopup() {
@@ -230,6 +243,25 @@ function toggleTimer() {
     }
 }
 
+function saveSettings() {
+    click.play();
+    
+    localStorage.setItem('WorkTime', workTimeSet.value);
+    localStorage.setItem('ShortBreakTime', sBreakTimeSet.value);
+    localStorage.setItem('LongBreakTime', lBreakTimeSet.value);
+
+    updateTimes();
+}
+
+function updateTimes() {
+    workDuration = workTimeSet.value * 60;
+    shortBreak = sBreakTimeSet.value * 60;
+    longBreak = lBreakTimeSet.value * 60;
+    timeLeft = workDuration;
+    phaseDuration = workDuration;
+    updateTimerDisplay();
+}
+
 // Initialize
 
 window.onload = (event) => {
@@ -239,6 +271,18 @@ window.onload = (event) => {
     } else {
         document.getElementById('popup').style.display = 'flex';
     }
+    
+    if (localStorage.getItem('WorkTime') === null) {
+        workTimeSet.value = 25;
+        sBreakTimeSet.value = 5;
+        lBreakTimeSet.value = 15;
+    } else {
+        workTimeSet.value = localStorage.getItem('WorkTime');
+        sBreakTimeSet.value = localStorage.getItem('ShortBreakTime');
+        lBreakTimeSet.value = localStorage.getItem('LongBreakTime');
+    }
+
+    updateTimes();
 };
 
 // Initial setup
