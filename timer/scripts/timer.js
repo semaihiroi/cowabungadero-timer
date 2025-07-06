@@ -34,6 +34,10 @@ const workTimeSet = document.getElementById('work-time-set');
 const sBreakTimeSet = document.getElementById('s-break-time-set')
 const lBreakTimeSet = document.getElementById("l-break-time-set");
 
+const partyButton1 = document.getElementById('butt1');
+const partyButton2 = document.getElementById('butt2');
+const buttonRight = document.getElementById('buttRight');
+
 // Quotes and portraits for characters
 const spamtonQuotes = [
     "Make the DEAL of your LIFE!",
@@ -324,10 +328,14 @@ function chooseCharacter() {
     } else {
         gifRight.src = currentCharacter.imgGifBreak;
     }
+    buttonRight.title = currentCharacter.name;
+    buttonRight.onclick = function () { clickChar(currentCharacter.name); };
+    console.log(buttonRight.onclick);
 }
 
 function clickChar(character) {
     console.log('You clicked ' + character);
+    updateQuoteBox(characters.find(c => c.name === character));
 }
 
 // Initialize
