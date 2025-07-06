@@ -138,7 +138,10 @@ body {
 }
 
 #startBtn:hover,
-#skipBtn:hover {
+#skipBtn:hover,
+.close-btn:hover,
+.corner-btn:hover,
+.settings-confirm:hover {
     background-color: white;
     color: black;
 }
@@ -286,6 +289,7 @@ strong {
 .char-button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .left-gif-container img {
