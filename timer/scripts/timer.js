@@ -71,7 +71,7 @@ const torielQuotes = [
     "Steady work builds a strong foundation.",
     "Patience is the key to success.",
     "Would you like some pie?",
-    "Be like Snoriel and take a nap!"
+    "Be like Snoriel and take a nap! Haha!"
 ];
 
 const krisQuote = [
