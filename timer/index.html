@@ -40,8 +40,8 @@
     <div class="timer" id="timer">0:00</div>
     <div id="phaseBox">Phase: Work | Next: Break</div>
     <div id="controls">
-        <button onclick="toggleTimer()" id="startBtn">Start</button>
-        <button onclick="skipPhase()" id="skipBtn">Skip</button>
+        <button onclick="toggleTimer()" id="startBtn" class="start-btn hover-btn">Start</button>
+        <button onclick="skipPhase()" id="skipBtn" class="skip-btn hover-btn">Skip</button>
     </div>
   </div>
 
@@ -49,14 +49,14 @@
     <img src="spamton.png" class="dialogue-portrait" id="portrait" alt=""/>
     <div class="dialogue-text" id="quoteBox"></div>
     <div class="btn-container">
-      <button class="corner-btn" onclick="openPopup()">Info</button>
-      <button class="corner-btn" onclick="openSettings()" style="border: 2px solid magenta; color: hotpink">Settings</button>
+      <button class="corner-btn hover-btn" onclick="openPopup()">Info</button>
+      <button class="settings-option corner-btn hover-btn" onclick="openSettings()" style="border: 2px solid magenta;">Settings</button>
     </div>
   </div>
 
   <div id="popup" class="popup-overlay">
     <div class="popup-window">
-      <button class="close-btn" onclick="closePopup()">X</button>
+      <button class="close-btn hover-btn" onclick="closePopup()">X</button>
       <div class="popup-scroll">
         <h2 id="info-header">Welcome to the Deltarune Cowabunga-doro Timer!</h2>
         <br>
@@ -104,7 +104,7 @@
         <div class="settings-option"><label >Short Break Duration: </label><input class="time-setter" id="s-break-time-set" type="number" size="2" min="1" max="99"></div>
         <br>
         <div class="settings-option"><label >Long Break Duration: </label><input class="time-setter" id="l-break-time-set" type="number" size="2" min="1" max="99"></div>
-        <button class="settings-confirm" onclick="saveSettings()">Save</button>
+        <button class="settings-confirm hover-btn" onclick="saveSettings()">Save</button>
         <br>
       </div>
     </div>
@@ -112,6 +112,7 @@
 
   <audio id="alarmSound" src="sounds/snd_badexplosion.wav" preload="auto"></audio>
   <audio id="clickSound" src="sounds/snd_select.wav" preload="auto"></audio>
+  <audio id="hoverSound" src="sounds/snd_hover.wav" preload="auto"></audio>
 
   <script src="scripts/timer.js"></script>
 </body>

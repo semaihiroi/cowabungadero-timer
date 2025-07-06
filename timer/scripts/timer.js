@@ -21,27 +21,30 @@ const startBtn = document.getElementById('startBtn');
 const skipBtn = document.getElementById('skipBtn');
 const quoteBox = document.getElementById('quoteBox');
 const portrait = document.getElementById('portrait');
-const alarm = document.getElementById('alarmSound');
-const click = document.getElementById('clickSound');
 const tpPercent = document.getElementById('tpPercent')
 
+// Sounds
+const alarm = document.getElementById('alarmSound');
+const click = document.getElementById('clickSound');
+const hover = document.getElementById('hoverSound');
+
+// More DOM elements
 const gifKris = document.getElementById('gifKris');
 const gifParty1 = document.getElementById('gifSusie');
 const gifParty2 = document.getElementById('gifRalsei');
 const gifRight = document.getElementById('gifRight');
-
 const workTimeSet = document.getElementById('work-time-set');
 const sBreakTimeSet = document.getElementById('s-break-time-set')
 const lBreakTimeSet = document.getElementById("l-break-time-set");
-
 const partyButton1 = document.getElementById('butt1');
 const partyButton2 = document.getElementById('butt2');
 const buttonRight = document.getElementById('buttRight');
 
-//list sounds and decrease volume to 50%.
+// List sounds and decrease volume to 50%.
 const sounds = [
     alarm,
-    click
+    click,
+    hover
 ];
 
 for (s in sounds) {
@@ -49,7 +52,16 @@ for (s in sounds) {
     console.log(sounds[s]);
 }
 
-// Quotes and portraits for characters
+// Set up for sound to play when hovering over a button
+const hoverTargets = document.querySelectorAll('.hover-sound');
+hoverTargets.forEach(l => {
+    l.addEventListener('mouseenter', () => {
+        // hoverSound.currentTime = 0; // rewind to start
+        hoverSound.play();
+    });
+});
+
+// Quotes for characters
 const spamtonQuotes = {
     work: [
         "MAKE THE [$32 MSRP] DEAL OF YOUR LIFE!!!",
@@ -66,7 +78,7 @@ const spamtonQuotes = {
 const tennaQuotes = {
     work: [
         "Fresh from the juice, fresh from the juice!",
-        "IT'S WORK. ING. TIIIIME!",
+        "It's.... WORK. ING. TIIIIME!",
         "The WORK-O-METER is off the charts, folks!"
     ],
     break: [
@@ -149,21 +161,6 @@ const characters = [
 
 const partyMembers = characters.filter(c => c.party === true);
 const otherPeeps = characters.filter(c => c.party === false);
-        /*Kris: 'gifs/kris_work.gif',
-        Susie: 'gifs/susie_work.gif',
-        Ralsei: 'gifs/ralsei_work.gif',
-    },
-    Break: {
-        Kris: 'gifs/kris_break.png',
-        Susie: 'gifs/susie_break.png',
-        Ralsei: 'gifs/ralsei_break.png',
-    },
-    LongBreak: {
-        Kris: 'gifs/kris_longbreak.gif',
-        Susie: 'gifs/susie_longbreak.gif',
-        Ralsei: 'gifs/ralsei_longbreak.gif',
-    }
-];*/
 
 // Break icon for portrait and right gif when on break
 const breakIconPortrait = 'gifs/toriel.png';
@@ -176,13 +173,12 @@ let phaseDuration = 1;
 // Current chosen character for right side
 let currentCharacter = otherPeeps[0];
 
-//local variable for whether to display info popup
-
 // Helper: pick random item from array
 function randomChoice(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// Types out the quote in the box
 function typeQuote(text, element) {
     // Clear any previous typing interval
     if (typingInterval !== null) {
@@ -190,7 +186,7 @@ function typeQuote(text, element) {
         typingInterval = null;
     }
 
-    //type text character by character
+    // Type text character by character
     element.textContent = '';
     let i = 0;
     typingInterval = setInterval(() => {
@@ -205,12 +201,12 @@ function typeQuote(text, element) {
 
 function updateQuoteBox(character) {
 
+    // Set variable
     let quote = '...';
-    console.log(character.quotes);
-    // Update portrait and right-side GIF
+    // Update portrait
     portrait.src = character.imgPortrait;
 
-    // Pick a random quote and display it
+    // Pick a random quote from the phase's pool and display it
     if (phase === 'Work'){
         quote = randomChoice(character.quotes.work);
     } else {
@@ -219,6 +215,7 @@ function updateQuoteBox(character) {
     typeQuote(quote, quoteBox);
 }
 
+// Show the elapsed time on the tab title if the current phase has started
 function updateTitleTime(mins, secs) {
     if (isRunning) {
         document.title = `${mins}:${secs} | Deltarune Pomodoro Timer`
@@ -227,6 +224,7 @@ function updateTitleTime(mins, secs) {
     }
 }
 
+// Update the time on the timer
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
     const seconds = (timeLeft % 60).toString().padStart(2, '0');
@@ -234,6 +232,7 @@ function updateTimerDisplay() {
     updateTitleTime(minutes, seconds);
 }
 
+// Create a new gif per phase, so single-play animations still run. Could probably be implemented better without so much using cache?
 function resetGifs() {
     const cacheBuster = new Date().getTime(); // unique timestamp
     gifKris.src = `${gifKris.src}?cb=${cacheBuster}`;
@@ -242,6 +241,7 @@ function resetGifs() {
     console.log(gifKris.src);
   }
 
+// Update phase notification
 function updatePhaseBox() {
     let nextPhase = '';
     if (phase === 'Work') {
@@ -254,6 +254,7 @@ function updatePhaseBox() {
     phaseBox.textContent = `Phase: ${phase.replace('LongBreak', 'Long Break')} | Next: ${nextPhase}`;
 }
 
+// Update the sprites of the party members based on the phase. Could be improved with variables and a helper function.
 function updateParty() {
     if (phase === 'Work') {
         gifKris.src = partyMembers[0].imgWork;
@@ -271,6 +272,7 @@ function updateParty() {
     resetGifs();
 }
 
+// Update all visual elements at once
 function updateAllVisuals() {
     updateTimerDisplay();
     updatePhaseBox();
@@ -278,6 +280,7 @@ function updateAllVisuals() {
     updateParty();
 }
 
+// Change phase of the timer
 function switchPhase() {
     if (phase === 'Work') {
         cycleCount++;
@@ -301,6 +304,7 @@ function switchPhase() {
     alarm.play();
 }
 
+// Skip a phase
 function skipPhase() {
     click.play();
     switchPhase();
@@ -308,7 +312,6 @@ function skipPhase() {
 
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
-    /*localStorage.setItem("SeenPopUp", false);*/
 }
 
 function closePopup() {

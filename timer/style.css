@@ -120,8 +120,8 @@ body {
     user-select: none;
 }
 
-#startBtn,
-#skipBtn {
+.start-btn,
+.skip-btn {
     font-family: 'Mercy', monospace;
     text-transform: uppercase;
     font-size: 2em;
@@ -137,11 +137,16 @@ body {
     margin-bottom: 5em;
 }
 
-#startBtn:hover,
+/*#startBtn:hover,
 #skipBtn:hover,
 .close-btn:hover,
 .corner-btn:hover,
 .settings-confirm:hover {
+    background-color: white;
+    color: black;
+}*/
+
+.hover-btn:hover {
     background-color: white;
     color: black;
 }
@@ -386,7 +391,12 @@ strong {
     padding: 0.2em 0.6em;
     margin: 0, 1em;
     font-family: 'Determination';
-    cursor: pointer; }
+    cursor: pointer; 
+}
+
+.settings-option {
+    color: hotpink;   
+}
 
 @media (orientation: portrait) {
     .left-gif-container {display: none;}
