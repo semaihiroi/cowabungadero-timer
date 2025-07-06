@@ -109,7 +109,7 @@ const progressBar = document.getElementById('progressMeter');
 let phaseDuration = 1;
 
 // Current chosen character for right side
-let currentCharacter = characters[0];
+let currentCharacter = otherPeeps[0];
 
 //local variable for whether to display info popup
 
@@ -138,10 +138,10 @@ function typeQuote(text, element) {
     }, 30);
 }
 
-function updateQuoteBox() {
-    if (phase === 'Work') {
+function updateQuoteBox(character) {
+    /*if (phase === 'Work') {
         // Pick a random character and quote
-        currentCharacter = randomChoice(characters);
+        currentCharacter = randomChoice(otherPeeps);
         portrait.src = currentCharacter.imgPortrait;
         gifRight.src = currentCharacter.imgGifWork;
         const quote = randomChoice(currentCharacter.quotes);
@@ -150,7 +150,18 @@ function updateQuoteBox() {
         portrait.src = breakIconPortrait;
         gifRight.src = breakIconGif;
         typeQuote('Break time! ✨', quoteBox);
-    }
+    }*/
+    /*if (!character) {
+        console.warn(`Character "${characterName}" not found.`);
+        return;
+    }*/
+
+    // Update portrait and right-side GIF
+    portrait.src = character.imgPortrait;
+
+    // Pick a random quote and display it
+    const quote = randomChoice(character.quotes);
+    typeQuote(quote, quoteBox);
 }
 
 function updateTitleTime(mins, secs) {
@@ -199,7 +210,7 @@ function updateParty() {
 function updateAllVisuals() {
     updateTimerDisplay();
     updatePhaseBox();
-    updateQuoteBox();
+    updateQuoteBox(currentCharacter);
     updateParty();
 }
 
@@ -221,6 +232,7 @@ function switchPhase() {
         timeLeft = workDuration;
         phaseDuration = workDuration;
     }
+    chooseCharacter();
     updateAllVisuals();
     alarm.play();
 }
@@ -305,6 +317,15 @@ function chooseParty() {
     updateParty();
 }
 
+function chooseCharacter() {
+    currentCharacter = randomChoice(otherPeeps);
+    if (phase === 'Work') {
+        gifRight.src = currentCharacter.imgGifWork;
+    } else {
+        gifRight.src = currentCharacter.imgGifBreak;
+    }
+}
+
 function clickChar(character) {
     console.log('You clicked ' + character);
 }
@@ -331,8 +352,9 @@ window.onload = (event) => {
 
     updateTimes();
     chooseParty();
+    chooseCharacter();
+    updateAllVisuals();
 };
 
 // Initial setup
-updateAllVisuals();
 
