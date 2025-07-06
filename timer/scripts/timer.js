@@ -75,13 +75,13 @@ const noelleQuotes = [
 
 // Character data
 const characters = [
-    { name: 'Spamton', party: false, quotes: spamtonQuotes, imgPortrait: 'gifs/spamton.webp', imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
-    { name: 'Tenna', party: false, quotes: tennaQuotes, imgPortrait: 'gifs/tenna.png', imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'tenna_break.gif' },
+    { name: 'Spamton', party: false, quotes: spamtonQuotes, imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
+    { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'tenna_break.gif' },
     { name: 'Toriel', party: false, quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png' },
     { name: 'Kris', party: true, quotes: krisQuote, imgWork: 'gifs/kris_work.gif', imgShortBreak: 'gifs/kris_break.png', imgLongBreak: 'gifs/kris_longbreak.gif' },
-    { name: 'Susie', party: true, quotes: susieQuotes, imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.png', imgLongBreak: 'gifs/susie_longbreak.gif' },
-    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.png', imgLongBreak: 'gifs/ralsei_longbreak.gif' },
-    { name: 'Noelle', party: true, quotes: noelleQuotes, imgWork: 'gifs/noelle_work.png', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.png' },
+    { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.png', imgLongBreak: 'gifs/susie_longbreak.gif' },
+    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgPortrait: 'gifs/ralsei.png', imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.png', imgLongBreak: 'gifs/ralsei_longbreak.gif' },
+    { name: 'Noelle', party: true, quotes: noelleQuotes, imgPortrait: 'gifs/noelle.png', imgWork: 'gifs/noelle_work.png', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.png' },
 ];
 
 //split characters into party and not party
@@ -318,6 +318,10 @@ function chooseParty() {
         party2 = randomChoice(friends);
     }
     console.log(party1 + " " + party2);
+    partyButton1.title = party1;
+    partyButton1.onclick = function () { clickChar(party1); };
+    partyButton2.title = party2;
+    partyButton2.onclick = function () { clickChar(party2); };
     updateParty();
 }
 
