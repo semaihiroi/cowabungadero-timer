@@ -78,10 +78,10 @@ const characters = [
     { name: 'Spamton', party: false, quotes: spamtonQuotes, imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
     { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'gifs/tenna_break.gif' },
     { name: 'Toriel', party: false, quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png' },
-    { name: 'Kris', party: true, quotes: krisQuote, imgWork: 'gifs/kris_work.gif', imgShortBreak: 'gifs/kris_break.png', imgLongBreak: 'gifs/kris_longbreak.gif' },
-    { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.png', imgLongBreak: 'gifs/susie_longbreak.gif' },
-    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgPortrait: 'gifs/ralsei.png', imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.png', imgLongBreak: 'gifs/ralsei_longbreak.gif' },
-    { name: 'Noelle', party: true, quotes: noelleQuotes, imgPortrait: 'gifs/noelle.png', imgWork: 'gifs/noelle_work.png', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.png' },
+    { name: 'Kris', party: true, quotes: krisQuote, imgWork: 'gifs/kris_work.gif', imgShortBreak: 'gifs/kris_break.gif', imgLongBreak: 'gifs/kris_longbreak.png' },
+    { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.gif', imgLongBreak: 'gifs/susie_longbreak.png' },
+    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgPortrait: 'gifs/ralsei.png', imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.gif', imgLongBreak: 'gifs/ralsei_longbreak.png' },
+    { name: 'Noelle', party: true, quotes: noelleQuotes, imgPortrait: 'gifs/noelle.png', imgWork: 'gifs/noelle_work.gif', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.gif' },
 ];
 
 //split characters into party and not party
@@ -183,6 +183,14 @@ function updateTimerDisplay() {
     updateTitleTime(minutes, seconds);
 }
 
+function resetGifs() {
+    const cacheBuster = new Date().getTime(); // unique timestamp
+    gifKris.src = `${gifKris.src}?cb=${cacheBuster}`;
+    gifParty1.src = `${gifParty1.src}?cb=${cacheBuster}`;
+    gifParty2.src = `${gifParty2.src}?cb=${cacheBuster}`;
+    console.log(gifKris.src);
+  }
+
 function updatePhaseBox() {
     let nextPhase = '';
     if (phase === 'Work') {
@@ -209,6 +217,7 @@ function updateParty() {
         gifSusie.src = partyMembers.find(c => c.name === party1).imgLongBreak;
         gifRalsei.src = partyMembers.find(c => c.name === party2).imgLongBreak;
     }
+    resetGifs();
 }
 
 function updateAllVisuals() {
