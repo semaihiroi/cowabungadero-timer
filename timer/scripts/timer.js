@@ -53,11 +53,12 @@ for (s in sounds) {
 }
 
 // Set up for sound to play when hovering over a button
-const hoverTargets = document.querySelectorAll('.hover-sound');
+const hoverTargets = document.querySelectorAll('.hover-btn');
+console.log(hoverTargets);
 hoverTargets.forEach(l => {
     l.addEventListener('mouseenter', () => {
-        // hoverSound.currentTime = 0; // rewind to start
-        hoverSound.play();
+        hover.currentTime = 0; // rewind to start
+        hover.play();
     });
 });
 
@@ -310,23 +311,28 @@ function skipPhase() {
     switchPhase();
 }
 
+// Open info window
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
 }
 
+// Close info window
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
     localStorage.setItem("SeenPopUp", true);
 }
 
+// Open settings window
 function openSettings() {
     document.getElementById('menu').style.display = 'flex';
 }
 
+// Close settings window
 function closeSettings() {
     document.getElementById('menu').style.display = 'none';
 }
 
+// Shows the percent progress of the current phase on the TP meter.
 function updateProgressMeter() {
     const progress = 1 - (timeLeft / phaseDuration);
     progressBar.style.transform = `scaleY(${progress})`;
@@ -334,6 +340,7 @@ function updateProgressMeter() {
     tpPercent.textContent = `${percentProgress}`;
 }
 
+// Handles starting and pausing the timer
 function toggleTimer() {
     click.play();
     if (isRunning) {
@@ -355,6 +362,7 @@ function toggleTimer() {
     }
 }
 
+// Saves chosen settings to local storage
 function saveSettings() {
     click.play();
     
@@ -365,6 +373,7 @@ function saveSettings() {
     updateTimes();
 }
 
+// Updates the timer when times are changed
 function updateTimes() {
     workDuration = workTimeSet.value * 60;
     shortBreak = sBreakTimeSet.value * 60;
@@ -374,6 +383,7 @@ function updateTimes() {
     updateTimerDisplay();
 }
 
+// Choose two characters from the party list for the left side
 function chooseParty() {
     let friends = ['Ralsei', 'Susie', 'Noelle'];
     party1 = randomChoice(friends);
@@ -388,6 +398,7 @@ function chooseParty() {
     updateParty();
 }
 
+// Choose a character from the list for the right side
 function chooseCharacter() {
     currentCharacter = randomChoice(otherPeeps);
     if (phase === 'Work') {
@@ -400,6 +411,7 @@ function chooseCharacter() {
     console.log(buttonRight.onclick);
 }
 
+// Handles clicking any character onscreen
 function clickChar(character) {
     console.log('You clicked ' + character);
     updateQuoteBox(characters.find(c => c.name === character));
@@ -431,5 +443,4 @@ window.onload = (event) => {
     updateAllVisuals();
 };
 
-// Initial setup
 
