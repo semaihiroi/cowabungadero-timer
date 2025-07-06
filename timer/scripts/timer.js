@@ -76,7 +76,7 @@ const noelleQuotes = [
 // Character data
 const characters = [
     { name: 'Spamton', party: false, quotes: spamtonQuotes, imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
-    { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'tenna_break.gif' },
+    { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'gifs/tenna_break.gif' },
     { name: 'Toriel', party: false, quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png' },
     { name: 'Kris', party: true, quotes: krisQuote, imgWork: 'gifs/kris_work.gif', imgShortBreak: 'gifs/kris_break.png', imgLongBreak: 'gifs/kris_longbreak.gif' },
     { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.png', imgLongBreak: 'gifs/susie_longbreak.gif' },
