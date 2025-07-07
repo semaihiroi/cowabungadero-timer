@@ -13,6 +13,7 @@ let isRunning = false;
 let typingInterval = null;
 let party1 = '';
 let party2 = '';
+let transitionGif = 'gifs/explosion.gif';
 
 // DOM elements
 const timerDisplay = document.getElementById('timer');
@@ -260,6 +261,8 @@ function resetGifs() {
     gifParty1.src = `${gifParty1.src}?cb=${cacheBuster}`;
     gifParty2.src = `${gifParty2.src}?cb=${cacheBuster}`;
     console.log(gifKris.src);
+    transitionGif = `gifs/explosion.gif?cb=${cacheBuster}`;
+
   }
 
 // Update phase notification
@@ -301,6 +304,16 @@ function updateAllVisuals() {
     updateParty();
 }
 
+// Shows a transition for the right side character.
+function playPhaseTransition() {
+    gifRight.src = transitionGif;
+
+    setTimeout(() => {
+        chooseCharacter();
+        updateAllVisuals(); 
+    }, 1280); 
+  }
+
 // Change phase of the timer
 function switchPhase() {
     if (phase === 'Work') {
@@ -320,9 +333,9 @@ function switchPhase() {
         timeLeft = workDuration;
         phaseDuration = workDuration;
     }
-    chooseCharacter();
-    updateAllVisuals();
+    
     alarm.play();
+    playPhaseTransition();
 }
 
 // Skip a phase
