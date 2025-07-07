@@ -27,6 +27,13 @@ const tpPercent = document.getElementById('tpPercent')
 const alarm = document.getElementById('alarmSound');
 const click = document.getElementById('clickSound');
 const hover = document.getElementById('hoverSound');
+const textS = document.getElementById('textSound');
+const textTor = document.getElementById('textToriel');
+const textSus = document.getElementById('textSusie');
+const textRal = document.getElementById('textRalsei');
+const textSpa = document.getElementById('textSpamton');
+const textTen = document.getElementById('textTenna');
+const textNoe = document.getElementById('textNoelle');
 
 // More DOM elements
 const gifKris = document.getElementById('gifKris');
@@ -40,27 +47,29 @@ const partyButton1 = document.getElementById('butt1');
 const partyButton2 = document.getElementById('butt2');
 const buttonRight = document.getElementById('buttRight');
 
-// List sounds and decrease volume to 50%.
+// List sounds and decrease volume to 30%.
 const sounds = [
     alarm,
     click,
-    hover
+    hover,
+    textS
 ];
 
+console.log(sounds);
 for (s in sounds) {
-    sounds[s].volume = 0.3;
     console.log(sounds[s]);
+    sounds[s].volume = 0.3;
 }
 
-// Set up for sound to play when hovering over a button
-const hoverTargets = document.querySelectorAll('.hover-btn');
+// Set up for sound to play when hovering over a button - won't work because of autoplay right now
+/*const hoverTargets = document.querySelectorAll('.hover-btn');
 console.log(hoverTargets);
 hoverTargets.forEach(l => {
     l.addEventListener('mouseenter', () => {
         hover.currentTime = 0; // rewind to start
         hover.play();
     });
-});
+});*/
 
 // Quotes for characters
 const spamtonQuotes = {
@@ -149,13 +158,13 @@ const noelleQuotes = {
 
 // Character data
 const characters = [
-    { name: 'Spamton', party: false, quotes: spamtonQuotes, imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png' },
-    { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'gifs/tenna_break.gif' },
-    { name: 'Toriel', party: false, quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png' },
+    { name: 'Spamton', party: false, quotes: spamtonQuotes, imgGifWork: 'gifs/spamton_work.gif', imgGifBreak: 'gifs/spamton_break.png', voice: textSpa },
+    { name: 'Tenna', party: false, quotes: tennaQuotes, imgGifWork: 'gifs/tenna_work.gif', imgGifBreak: 'gifs/tenna_break.gif', voice: textTen },
+    { name: 'Toriel', party: false, quotes: torielQuotes, imgPortrait: 'gifs/toriel.gif', imgGifWork: 'gifs/toriel_work.gif', imgGifBreak: 'gifs/toriel_break.png', voice: textTor },
     { name: 'Kris', party: true, quotes: krisQuote, imgWork: 'gifs/kris_work.gif', imgShortBreak: 'gifs/kris_break.gif', imgLongBreak: 'gifs/kris_longbreak.png' },
-    { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.gif', imgLongBreak: 'gifs/susie_longbreak.png' },
-    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgPortrait: 'gifs/ralsei.png', imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.gif', imgLongBreak: 'gifs/ralsei_longbreak.png' },
-    { name: 'Noelle', party: true, quotes: noelleQuotes, imgPortrait: 'gifs/noelle.png', imgWork: 'gifs/noelle_work.gif', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.gif' },
+    { name: 'Susie', party: true, quotes: susieQuotes, imgPortrait: 'gifs/susie.png', imgWork: 'gifs/susie_work.gif', imgShortBreak: 'gifs/susie_break.gif', imgLongBreak: 'gifs/susie_longbreak.png', voice: textSus },
+    { name: 'Ralsei', party: true, quotes: ralseiQuotes, imgPortrait: 'gifs/ralsei.png', imgWork: 'gifs/ralsei_work.gif', imgShortBreak: 'gifs/ralsei_break.gif', imgLongBreak: 'gifs/ralsei_longbreak.png', voice: textRal },
+    { name: 'Noelle', party: true, quotes: noelleQuotes, imgPortrait: 'gifs/noelle.png', imgWork: 'gifs/noelle_work.gif', imgShortBreak: 'gifs/noelle_break.png', imgLongBreak: 'gifs/noelle_longbreak.gif', voice: textNoe },
 ];
 
 //split characters into party and not party
@@ -180,7 +189,7 @@ function randomChoice(arr) {
 }
 
 // Types out the quote in the box
-function typeQuote(text, element) {
+function typeQuote(text, character, element) {
     // Clear any previous typing interval
     if (typingInterval !== null) {
         clearInterval(typingInterval);
@@ -190,9 +199,20 @@ function typeQuote(text, element) {
     // Type text character by character
     element.textContent = '';
     let i = 0;
+    let voice = textS;
+    console.log(voice);
     typingInterval = setInterval(() => {
         if (i < text.length) {
             element.textContent += text[i++];
+            if (character.voice !== undefined) {
+                voice = character.voice;
+            }
+            // Play voice sound during typing
+            if (text[i] !== ' ' /*&& i % 2 === 0*/) {
+                voice.play().catch(e => {
+                    // Ignore errors like "play() interrupted by user gesture"
+                });
+            }
         } else {
             clearInterval(typingInterval);
             typingInterval = null;
@@ -213,7 +233,7 @@ function updateQuoteBox(character) {
     } else {
         quote = randomChoice(character.quotes.break);
     }
-    typeQuote(quote, quoteBox);
+    typeQuote(quote, character, quoteBox);
 }
 
 // Show the elapsed time on the tab title if the current phase has started
