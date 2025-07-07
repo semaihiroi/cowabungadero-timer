@@ -209,7 +209,8 @@ function typeQuote(text, character, element) {
                 voice = character.voice;
             }
             // Play voice sound during typing
-            if (text[i] !== ' ' /*&& i % 2 === 0*/) {
+            if (i % 6 === 0) {
+                voice.currentTime = 0; // rewind
                 voice.play().catch(e => {
                     // Ignore errors like "play() interrupted by user gesture"
                 });
@@ -307,6 +308,13 @@ function updateAllVisuals() {
 // Shows a transition for the right side character.
 function playPhaseTransition() {
     gifRight.src = transitionGif;
+
+    quoteBox.textContent = '';
+    portrait.src = 'a.jpg';
+    if (typingInterval !== null) {
+        clearInterval(typingInterval);
+        typingInterval = null;
+    }
 
     setTimeout(() => {
         chooseCharacter();
